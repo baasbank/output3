@@ -1,0 +1,24 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "key.json",
+      "project_id": "gcloud-project-id",
+      "source_image": "ubuntu-1604-xenial-v20180109",
+      "zone": "europe-west3-a",
+      "ssh_username": "andeladeveloper",
+      "image_name": "packer-image-rpg"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "/Users/andeladeveloper/Desktop/projects/outputs/output3/packer/id_rsa",
+      "destination": "/home/andeladeveloper/.ssh/"
+    },
+    {
+      "type": "shell",
+      "script": "/Users/andeladeveloper/Desktop/projects/outputs/output3/packer/script.sh"
+    }
+  ]
+}
