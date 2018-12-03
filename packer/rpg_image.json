@@ -13,12 +13,12 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "/Users/andeladeveloper/Desktop/projects/outputs/output3/packer/id_rsa",
+      "source": "path_to_ssh_private_key",
       "destination": "/home/andeladeveloper/.ssh/"
     },
     {
       "type": "shell",
-      "script": "/Users/andeladeveloper/Desktop/projects/outputs/output3/packer/script.sh"
+      "script": "./script.sh"
     }
   ]
 }
