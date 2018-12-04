@@ -104,7 +104,7 @@ You should see the new image you built with the name `packer-image-rpg` in the I
 1. Go to https://console.google.cloud.com
 2. Click on the menu icon > Compute Engine > Instance groups
 
-![image](https://user-images.githubusercontent.com/26189554/49431264-632b8700-f7ad-11e8-9a3b-791986915a99.png)
+![image](https://user-images.githubusercontent.com/26189554/49458643-8413cc80-f7ed-11e8-9b96-dd3f5d19cd39.png)
 
 3. Click on CREATE INSTANCE GROUP
 
@@ -112,43 +112,43 @@ You should see the new image you built with the name `packer-image-rpg` in the I
 
 
 4. 
-a. Give the instance group a name.
+ a. Give the instance group a name.
 
 
-b. Under location select Multi-zone.
+ b. Under location select Multi-zone.
 
 
-c. Select a region
+ c. Select a region
 
 
-d. Click the dropdown under Instance template and select `Create instance template`
+ d. Click the dropdown under Instance template and select `Create instance template`
 
 
-e. On the `Create an instance template` modal that pops up:
- * Give your instance template a name
- * Click on the Change button under Boot disk
+ e. On the `Create an instance template` modal that pops up:
+  * Give your instance template a name
+  * Click on the Change button under Boot disk
  
- ![image](https://user-images.githubusercontent.com/26189554/49432237-83f4dc00-f7af-11e8-9492-41e52bb1415a.png)
+  ![image](https://user-images.githubusercontent.com/26189554/49432237-83f4dc00-f7af-11e8-9492-41e52bb1415a.png)
  
  
- * Click on `Custom images`. You should see the packer-image-rpg that was built using packer in the previous section. Select it.
+  * Click on `Custom images`. You should see the packer-image-rpg that was built using packer in the previous section. Select it.
  
- ![image](https://user-images.githubusercontent.com/26189554/49433036-55780080-f7b1-11e8-8dc8-1aa011f38583.png)
+  ![image](https://user-images.githubusercontent.com/26189554/49433036-55780080-f7b1-11e8-8dc8-1aa011f38583.png)
 
 
- * Under `Firewall` select `Allow HTTP traffic`
- * Click on ` Management, security, disks, networking, sole tenancy `
+  * Under `Firewall` select `Allow HTTP traffic`
+  * Click on ` Management, security, disks, networking, sole tenancy `
 
- ![image](https://user-images.githubusercontent.com/26189554/49433314-02eb1400-f7b2-11e8-8c07-152de92e19d3.png)
+  ![image](https://user-images.githubusercontent.com/26189554/49433314-02eb1400-f7b2-11e8-8c07-152de92e19d3.png)
 
- * Copy the content of the instance template startup script at https://github.com/baasbank/rpg/blob/master/instance_template_startup_script.sh and paste it in the field for Startup script
+  * Copy the content of the instance template startup script at https://github.com/baasbank/rpg/blob/master/instance_template_startup_script.sh and paste it in the field for Startup script
 
- ![image](https://user-images.githubusercontent.com/26189554/49433631-c370f780-f7b2-11e8-99f5-82588cd0b4cb.png)
+  ![image](https://user-images.githubusercontent.com/26189554/49433631-c370f780-f7b2-11e8-99f5-82588cd0b4cb.png)
 
 
- * Click on Save and continue
+  * Click on Save and continue
 
- ![image](https://user-images.githubusercontent.com/26189554/49433891-4eea8880-f7b3-11e8-99e1-5249a30e745a.png)
+  ![image](https://user-images.githubusercontent.com/26189554/49433891-4eea8880-f7b3-11e8-99e1-5249a30e745a.png)
 
 f. Type in 2 for Minimum number of instances and 3 for Maximum number of instances, then click on Create.
 
