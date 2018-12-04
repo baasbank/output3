@@ -61,8 +61,8 @@ a. Click on the menu icon > Compute Engine > Metadata
 ![image](https://user-images.githubusercontent.com/26189554/49341434-8dfec980-f64d-11e8-9c31-0ca5bc81ce1c.png)
 
 
-b. Add metadata with the key `image_tag` and the value `0.1.57`
-That value represents the latest build number found at https://hub.docker.com/r/baasbank/rpg-docker/tags/ as at the time this documentation is being written.
+b. Add metadata with the key `image_tag` and the value `baasbank/rpg-docker:0.1.57`
+That value represents the latest image tag found at https://hub.docker.com/r/baasbank/rpg-docker/tags/ as at the time this documentation is being written.
 
 c. Click on Save to save your changes.
 
@@ -97,3 +97,61 @@ Simply click on the menu icon > Compute Engine > Images
 ![image](https://user-images.githubusercontent.com/26189554/49372619-91e92500-f6fb-11e8-9bb6-d70efe08dc20.png)
 
 You should see the new image you built with the name `packer-image-rpg` in the Images list.
+
+
+### CREATE MANAGED INSTANCE GROUP ON GOOGLE CLOUD
+
+1. Go to https://console.google.cloud.com
+2. Click on the menu icon > Compute Engine > Instance groups
+
+![image](https://user-images.githubusercontent.com/26189554/49431264-632b8700-f7ad-11e8-9a3b-791986915a99.png)
+
+3. Click on CREATE INSTANCE GROUP
+
+![image](https://user-images.githubusercontent.com/26189554/49431413-ba315c00-f7ad-11e8-9f6f-ea6a7419cafe.png)
+
+
+4. 
+a. Give the instance group a name.
+b. Under location select Multi-zone.
+c. Select a region
+d. Click the dropdown under Instance template and select `Create instance template`
+e. On the `Create an instance template` modal that pops up:
+ * Give your instance template a name
+ * Click on the Change button under Boot disk
+ 
+ ![image](https://user-images.githubusercontent.com/26189554/49432237-83f4dc00-f7af-11e8-9492-41e52bb1415a.png)
+ 
+ 
+ * Click on `Custom images`. You should see the packer-image-rpg that was built using packer in the previous section. Select it.
+ 
+ ![image](https://user-images.githubusercontent.com/26189554/49433036-55780080-f7b1-11e8-8dc8-1aa011f38583.png)
+
+
+ * Under `Firewall` select `Allow HTTP traffic`
+ * Click on ` Management, security, disks, networking, sole tenancy `
+
+ ![image](https://user-images.githubusercontent.com/26189554/49433314-02eb1400-f7b2-11e8-8c07-152de92e19d3.png)
+
+ * Copy the content of the instance template startup script at https://github.com/baasbank/rpg/blob/master/instance_template_startup_script.sh and paste it in the field for Startup script
+
+ ![image](https://user-images.githubusercontent.com/26189554/49433631-c370f780-f7b2-11e8-99f5-82588cd0b4cb.png)
+
+
+ * Click on Save and continue
+
+ ![image](https://user-images.githubusercontent.com/26189554/49433891-4eea8880-f7b3-11e8-99e1-5249a30e745a.png)
+
+f. Type in 2 for Minimum number of instances and 3 for Maximum number of instances, then click on Create.
+
+
+![image](https://user-images.githubusercontent.com/26189554/49434147-cf10ee00-f7b3-11e8-9b52-aa1eaf4c405c.png)
+
+g. Wait for the instances to be created. You'll see a green checkmark before the instance group once it's ready.
+
+![image](https://user-images.githubusercontent.com/26189554/49434677-ffa55780-f7b4-11e8-8105-96018dff702b.png)
+
+h. Click on the instance group names, and you'll see the instances in the group as shown below. Click on the external ip of any instance, and you should see the Phone Number Generator app.
+
+![image](https://user-images.githubusercontent.com/26189554/49435024-ec46bc00-f7b5-11e8-95aa-9727263be305.png)
+
