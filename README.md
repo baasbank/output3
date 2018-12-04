@@ -51,19 +51,18 @@ Leave the JSON key type selected then click on the Create button to download the
 ![image](https://user-images.githubusercontent.com/26189554/49341305-ad94f280-f64b-11e8-9e64-a7ef0eeb59b2.png)
 
 #### 6. ADD SOME PROJECT METADATA
-The instance template startup script at https://github.com/baasbank/rpg/blob/master/instance_template_startup_script.sh which is a template for the creation of the instances in the Managed Instance Group 
-Follow the steps below to add metadata:
+The instance template startup script at https://github.com/baasbank/rpg/blob/master/instance_template_startup_script.sh (which is a template for the creation of the instances in the Managed Instance Group) fetches the IMAGE_TAG from project metadata on Google Cloud. The IMAGE_TAG metadata is set during the Docker Image build process on CircleCI and represents the tag for the latest image on Docker Hub.
+To ensure a successful build when the instance group is created, we need to set the IMAGE_TAG manually. This wouldn't be necessary subsequently as it would be automatically set from CircleCI.
+
+Follow the steps below to add the `image_tag` metadata:
 
 a. Click on the menu icon > Compute Engine > Metadata
 
 ![image](https://user-images.githubusercontent.com/26189554/49341434-8dfec980-f64d-11e8-9c31-0ca5bc81ce1c.png)
 
 
-b. Create metadata for the following:
-  1. database_name
-  2. database_password
-  3. mysql_root_password
-Give them any value you like BUT make sure the keys are exactly as written in the list above because the setup_wordpress.sh script will query for those values using those exact keys.
+b. Add metadata with the key `image_tag` and the value `0.1.57`
+That value represents the latest build number found at https://hub.docker.com/r/baasbank/rpg-docker/tags/ as at the time this documentation is being written.
 
 c. Click on Save to save your changes.
 
@@ -83,7 +82,7 @@ c. Click on Save to save your changes.
   * Change the value for `project_id` to your project id generated in the GCLOUD SETUP Section above.
   * Under provisioners, change the value for `source` to the path to your SSH private key file.
   
-  ![image](https://user-images.githubusercontent.com/26189554/49372682-bc3ae280-f6fb-11e8-8028-3ad1f24e55f0.png)
+  ![image](https://user-images.githubusercontent.com/26189554/49428459-6c652580-f7a6-11e8-92d2-c46a23b2430d.png)
 
 
 4. Follow the instructions at https://www.packer.io/intro/getting-started/install.html to install packer.
