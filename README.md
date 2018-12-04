@@ -155,3 +155,9 @@ h. Click on the instance group names, and you'll see the instances in the group 
 
 ![image](https://user-images.githubusercontent.com/26189554/49435024-ec46bc00-f7b5-11e8-95aa-9727263be305.png)
 
+![image](https://user-images.githubusercontent.com/26189554/49457011-5e38f880-f7ea-11e8-83a7-cf1979fd43f6.png)
+
+
+#### FOR MORE INFO
+More information about the CI/CD Pipeline flow is contained in [this document](https://docs.google.com/document/d/1QpOjmuoU_4iIRpdXwhQX_xCqe6CDJeCM8xbYP0hABKs/edit?usp=sharing).
+
