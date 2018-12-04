@@ -113,9 +113,17 @@ You should see the new image you built with the name `packer-image-rpg` in the I
 
 4. 
 a. Give the instance group a name.
+
+
 b. Under location select Multi-zone.
+
+
 c. Select a region
+
+
 d. Click the dropdown under Instance template and select `Create instance template`
+
+
 e. On the `Create an instance template` modal that pops up:
  * Give your instance template a name
  * Click on the Change button under Boot disk
